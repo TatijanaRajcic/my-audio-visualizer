@@ -1,18 +1,10 @@
 body, html {
   margin:0;
-  padding:0
+  padding:0;
+  color:white
 }
 
-#analyser-canvas {
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  background-color: black;
-  width: 100vw;
-  height: 100vh;
-}
-
-#bars-canvas {
+#analyser-canvas, #bars-canvas, #combine-canvas, #combine-bar-canvas {
   margin-left: auto;
   margin-right: auto;
   display: block;

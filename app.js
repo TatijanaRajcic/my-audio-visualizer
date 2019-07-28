@@ -27,5 +27,13 @@ app.get("/bars", function(req,res) {
   res.render("bars")
 })
 
+app.get("/combine", function(req,res) {
+  res.render("combine")
+})
+
+app.get("/combine-bars", function(req,res) {
+  res.render("combineBars")
+})
+
 // the server
 app.listen(3000)
