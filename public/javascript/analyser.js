@@ -62,7 +62,7 @@ $(document).ready(function() {
         e.preventDefault();
         sourceNode.stop(0);
         audioPlaying = false;
-        screenshotCanvas()
+        /* screenshotCanvas() */
     });
 });
 function setupAudioNodes() {

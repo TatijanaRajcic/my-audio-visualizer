@@ -13,16 +13,15 @@ function getData() {
   source = audioContext.createBufferSource();
   request = new XMLHttpRequest();
 
-  request.open('GET', 'songs/anyway.mp3', true);
+  request.open('GET', 'songs/factor.mp3', true);
   request.responseType = 'arraybuffer';
 
   request.onload = function() {
     var audioData = request.response;
 
     audioContext.decodeAudioData(audioData, function(buffer) {
-        myBuffer = buffer;
         songLength = buffer.duration;
-        source.buffer = myBuffer;
+        source.buffer = buffer;
         source.playbackRate.value = playbackControl.value;
         source.connect(audioContext.destination);
       },

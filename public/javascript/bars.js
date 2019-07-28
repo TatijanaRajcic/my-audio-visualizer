@@ -21,7 +21,7 @@ var audioPlaying = false;
 var sampleSize = 1024;  // number of samples to collect before analyzing data
 var amplitudeArray;     // array to hold time domain data
 // This must be hosted on the same server as this page - otherwise you get a Cross Site Scripting error
-var audioUrl = "songs/bonobo.mp3";
+var audioUrl = "songs/anyway.mp3";
 // Global Variables for the Graphics
 var canvasWidth  = 1000;
 var canvasHeight = 150;
@@ -62,7 +62,7 @@ $(document).ready(function() {
         e.preventDefault();
         sourceNode.stop(0);
         audioPlaying = false;
-        screenshotCanvas();
+        /* screenshotCanvas(); */
     });
 });
 
@@ -120,7 +120,7 @@ function drawTimeDomain() {
 }
 
 function clearCanvas() {
-		ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+    ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 }
 
 function screenshotCanvas() {
