@@ -62,7 +62,11 @@ $(document).ready(function() {
         e.preventDefault();
         sourceNode.stop(0);
         audioPlaying = false;
-        /* screenshotCanvas(); */
+    });
+
+    $("#screenshot_button2").on('click', function(e) {
+        e.preventDefault();
+        screenshotCanvas()
     });
 });
 
