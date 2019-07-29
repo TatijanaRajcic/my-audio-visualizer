@@ -1,7 +1,7 @@
 body, html {
   margin:0;
   padding:0;
-  color:white
+  color:black;
 }
 
 #visualiser-canvas {
@@ -25,4 +25,5 @@ body, html {
   z-index:0;
   left:12px;
   top:10px;
+  color:white;
 }

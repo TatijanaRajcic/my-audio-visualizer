@@ -1,3 +1,13 @@
+const express = require('express');
+const router  = express.Router();
+
+router.get("/", function(req,res) {
+    res.render("home")
+  })
+
+module.exports = router
+
+
 // const express = require('express');
 // const router  = express.Router();
 // freesound = require('../public/javascripts/freesound.js/freesound')
