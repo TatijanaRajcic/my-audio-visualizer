@@ -1,5 +1,7 @@
 const express = require("express");
 const app = express()
+var bodyParser = require('body-parser')
+app.use(bodyParser.urlencoded({ extended: false }))
 
 // setting up CORS
 var cors = require('cors')
@@ -15,9 +17,9 @@ var hbs = require('hbs');
 hbs.registerPartials(__dirname + '/views/partials');
 
 // the routes
-
-// app.use('/', require('./routes/home'))
+app.use('/', require('./routes/home'))
 app.use('/edit', require('./routes/edit'));
+// app.use('/search', require('./routes/search'));
 
 // the server
 app.listen(3000)

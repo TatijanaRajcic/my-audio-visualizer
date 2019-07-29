@@ -1,0 +1,12 @@
+<form action="/" method="post">
+    <label>Query:</label>
+    <input id="query-input" type="text" name="searched" value="{{query}}">
+    <button id="query-btn">SEARCH</button>
+</form>
+
+<div id="freesoundPartial"></div>
+
+
+{{#each query}}
+    {{> freesoundResult}}
+{{/each}}
