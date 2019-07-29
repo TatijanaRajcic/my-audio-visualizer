@@ -7,9 +7,11 @@ window.requestAnimFrame = (function(){
             window.setTimeout(callback, 1000 / 60);
           };
 })();
+
 window.AudioContext = (function(){
     return  window.webkitAudioContext || window.AudioContext || window.mozAudioContext;
 })();
+
 // Global Variables for Audio
 var audioContext;
 var audioBuffer;
@@ -20,57 +22,19 @@ var audioData = null;
 var audioPlaying = false;
 var sampleSize = 1024;  // number of samples to collect before analyzing data
 var amplitudeArray;     // array to hold time domain data
-// This must be hosted on the same server as this page - otherwise you get a Cross Site Scripting error
-var audioUrl = "songs/anyway.mp3";
+var audioUrl = "songs/anyway.mp3"; // This must be hosted on the same server as this page - otherwise you get a Cross Site Scripting error
+
 // Global Variables for the Graphics
 var canvasWidth  = 1000;
 var canvasHeight = 150;
 var ctx;
-$(document).ready(function() {
-    ctx = $("#visualiser-canvas").get()[0].getContext("2d");
-    // the AudioContext is the primary 'container' for all your audio node objects
-    try {
-        audioContext = new AudioContext();
-    } catch(e) {
-        alert('Web Audio API is not supported in this browser');
-    }
-    // When the Start button is clicked, finish setting up the audio nodes, play the sound,
-    // gather samples for the analysis, update the canvas
-    $("#start_button").on('click', function(e) {
-        e.preventDefault();
-        // Set up the audio Analyser, the Source Buffer and javascriptNode
-        setupAudioNodes();
-        // setup the event handler that is triggered every time enough samples have been collected
-        // trigger the audio analysis and draw the results
-        javascriptNode.onaudioprocess = function () {
-            // get the Time Domain data for this sample
-            analyserNode.getByteTimeDomainData(amplitudeArray);
-            // draw the display if the audio is playing
-            if (audioPlaying == true && valueType.value === "bars") {
-                requestAnimFrame(drawTimeDomainBars);
-            } else if (audioPlaying == true && valueType.value ==="lines") {
-                requestAnimFrame(drawTimeDomainLines);
-            }
-        }
-        // Load the Audio the first time through, otherwise play it from the buffer
-        if(audioData == null) {
-            loadSound(audioUrl);
-        } else {
-            playSound(audioData);
-        }
-    });
-    // Stop the audio playing
-    $("#stop_button").on('click', function(e) {
-        e.preventDefault();
-        sourceNode.stop(0);
-        audioPlaying = false;
-    });
 
-    $("#screenshot_button").on('click', function(e) {
-        e.preventDefault();
-        screenshotCanvas()
-    });
-});
+// Global Variables for Inputs
+var playbackControl = document.querySelector('.playback-rate-control');
+var playbackValue = document.querySelector('.playback-rate-value');
+var valueType = document.querySelector('.type-visual');
+
+// Functions
 
 function setupAudioNodes() {
     sourceNode     = audioContext.createBufferSource();
@@ -87,6 +51,7 @@ function setupAudioNodes() {
 }
 // Load the audio from the URL via Ajax and store it in global variable audioData
 // Note that the audio load is asynchronous
+
 function loadSound(url) {
     var request = new XMLHttpRequest();
     request.open('GET', url, true);
@@ -147,12 +112,55 @@ function screenshotCanvas() {
     screenshot.src = dataURL;
 }
 
-var playbackControl = document.querySelector('.playback-rate-control');
-var playbackValue = document.querySelector('.playback-rate-value');
-var valueType = document.querySelector('.type-visual');
+// Execute
 
+$(document).ready(function() {
+    ctx = $("#visualiser-canvas").get()[0].getContext("2d");
+    // the AudioContext is the primary 'container' for all your audio node objects
+    try {
+        audioContext = new AudioContext();
+    } catch(e) {
+        alert('Web Audio API is not supported in this browser');
+    }
+    // When the Start button is clicked, finish setting up the audio nodes, play the sound,
+    // gather samples for the analysis, update the canvas
+    $("#start_button").on('click', function(e) {
+        e.preventDefault();
+        // Set up the audio Analyser, the Source Buffer and javascriptNode
+        setupAudioNodes();
+        // setup the event handler that is triggered every time enough samples have been collected
+        // trigger the audio analysis and draw the results
+        javascriptNode.onaudioprocess = function () {
+            // get the Time Domain data for this sample
+            analyserNode.getByteTimeDomainData(amplitudeArray);
+            // draw the display if the audio is playing
+            if (audioPlaying == true && valueType.value === "bars") {
+                requestAnimFrame(drawTimeDomainBars);
+            } else if (audioPlaying == true && valueType.value ==="lines") {
+                requestAnimFrame(drawTimeDomainLines);
+            }
+        }
+        // Load the Audio the first time through, otherwise play it from the buffer
+        if(audioData == null) {
+            loadSound(audioUrl);
+        } else {
+            playSound(audioData);
+        }
+    });
+    // Stop the audio playing
+    $("#stop_button").on('click', function(e) {
+        e.preventDefault();
+        sourceNode.stop(0);
+        audioPlaying = false;
+    });
+
+    $("#screenshot_button").on('click', function(e) {
+        e.preventDefault();
+        screenshotCanvas()
+    });
+});
 
 playbackControl.oninput = function() {
-  sourceNode.playbackRate.value = playbackControl.value;
-  playbackValue.innerHTML = playbackControl.value;
+    sourceNode.playbackRate.value = playbackControl.value;
+    playbackValue.innerHTML = playbackControl.value;
 }
