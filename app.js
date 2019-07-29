@@ -16,9 +16,8 @@ hbs.registerPartials(__dirname + '/views/partials');
 
 // the routes
 
-app.get("/edit", function(req,res) {
-  res.render("edit")
-})
+// app.use('/', require('./routes/home'))
+app.use('/edit', require('./routes/edit'));
 
 // the server
 app.listen(3000)
