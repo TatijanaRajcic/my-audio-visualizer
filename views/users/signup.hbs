@@ -1,1 +1,21 @@
-signup
+<div class="signup-page">
+  <form action="/signup" method="POST">
+    <h2>Sign up</h2>
+
+    <div>
+      <label for="username">Username</label><br>
+      <input type="text" name="username" placeholder="Your username">
+    </div>
+
+    <div>
+      <label for="password">Password</label><br>
+      <input type="password" name="password" placeholder="********">
+    </div>
+
+    {{#if errorMessage}}
+      <div class="error-message">{{ errorMessage }}</div>
+    {{/if}}
+
+    <button class="btn-sign" type="submit">Create account</button>
+  </form>
+</div>

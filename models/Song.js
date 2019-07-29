@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema   = mongoose.Schema;
+const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const songSchema = new Schema({
   name: String,
@@ -8,7 +9,7 @@ const songSchema = new Schema({
     type: ObjectId, 
     ref: "User" // NAME OF MODEL
   },
-  effets: Array
+  effects: Array
 });
 
 const Song = mongoose.model("Song", songSchema, "songs");

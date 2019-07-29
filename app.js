@@ -5,7 +5,8 @@ const bodyParser = require('body-parser');
 const session    = require("express-session");
 /* const MongoStore = require("connect-mongo")(session); */
 const cookieParser = require('cookie-parser');
-const cors = require('cors')
+const cors = require('cors');
+const multer = require("multer");
 const app = express()
 
 // Connection to the database "soundEditing"
@@ -52,10 +53,16 @@ app.use(function(req,res,next) {
   next()
 })
 
+// Configuring multer for songs upload
+let upload = multer({ dest: "public/songs" });
+
 // the routes
 
 app.use('/', require('./routes/home'));
-app.use('/edit', require('./routes/edit'));
+
+app.use('/add', upload.single("song"), require('./routes/songs/add'));
+app.use('/edit', require('./routes/songs/edit'));
+
 app.use('/login', require('./routes/users/login'));
 app.use('/signup', require('./routes/users/signup'));
 app.use('/logout', require('./routes/users/logout'));
