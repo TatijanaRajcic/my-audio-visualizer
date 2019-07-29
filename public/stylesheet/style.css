@@ -4,7 +4,7 @@ body, html {
   color:white
 }
 
-#analyser-canvas, #bars-canvas, #combine-canvas, #combine-bar-canvas {
+#visualiser-canvas {
   margin-left: auto;
   margin-right: auto;
   display: block;

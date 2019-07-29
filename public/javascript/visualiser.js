@@ -21,13 +21,13 @@ var audioPlaying = false;
 var sampleSize = 1024;  // number of samples to collect before analyzing data
 var amplitudeArray;     // array to hold time domain data
 // This must be hosted on the same server as this page - otherwise you get a Cross Site Scripting error
-var audioUrl = "songs/bonobo.mp3";
+var audioUrl = "songs/anyway.mp3";
 // Global Variables for the Graphics
 var canvasWidth  = 1000;
 var canvasHeight = 150;
 var ctx;
 $(document).ready(function() {
-    ctx = $("#combine-bar-canvas").get()[0].getContext("2d");
+    ctx = $("#visualiser-canvas").get()[0].getContext("2d");
     // the AudioContext is the primary 'container' for all your audio node objects
     try {
         audioContext = new AudioContext();
@@ -36,7 +36,7 @@ $(document).ready(function() {
     }
     // When the Start button is clicked, finish setting up the audio nodes, play the sound,
     // gather samples for the analysis, update the canvas
-    $("#start_button2").on('click', function(e) {
+    $("#start_button").on('click', function(e) {
         e.preventDefault();
         // Set up the audio Analyser, the Source Buffer and javascriptNode
         setupAudioNodes();
@@ -46,8 +46,10 @@ $(document).ready(function() {
             // get the Time Domain data for this sample
             analyserNode.getByteTimeDomainData(amplitudeArray);
             // draw the display if the audio is playing
-            if (audioPlaying == true) {
-                requestAnimFrame(drawTimeDomain);
+            if (audioPlaying == true && valueType.value === "bars") {
+                requestAnimFrame(drawTimeDomainBars);
+            } else if (audioPlaying == true && valueType.value ==="lines") {
+                requestAnimFrame(drawTimeDomainLines);
             }
         }
         // Load the Audio the first time through, otherwise play it from the buffer
@@ -58,13 +60,13 @@ $(document).ready(function() {
         }
     });
     // Stop the audio playing
-    $("#stop_button2").on('click', function(e) {
+    $("#stop_button").on('click', function(e) {
         e.preventDefault();
         sourceNode.stop(0);
         audioPlaying = false;
     });
 
-    $("#screenshot_button2").on('click', function(e) {
+    $("#screenshot_button").on('click', function(e) {
         e.preventDefault();
         screenshotCanvas()
     });
@@ -111,7 +113,7 @@ function onError(e) {
     console.log(e);
 }
 
-function drawTimeDomain() {
+function drawTimeDomainBars() {
   clearCanvas();
   ctx.fillStyle = '#00CCFF'; // Color of the bars
   bars = 100;
@@ -124,20 +126,30 @@ function drawTimeDomain() {
   }
 }
 
+function drawTimeDomainLines() {
+    clearCanvas();
+    for (var i = 0; i < amplitudeArray.length; i++) {
+        var value = amplitudeArray[i] / 256;
+        var y = canvasHeight - (canvasHeight * value) - 1;
+        ctx.fillStyle = "#00CCFF"; //color of the lines
+        ctx.fillRect(i, y, 1, 1);
+    }
+}
+
 function clearCanvas() {
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 }
 
 function screenshotCanvas() {
-    var canvas = document.getElementById('combine-bar-canvas');
+    var canvas = document.getElementById('visualiser-canvas');
     var dataURL = canvas.toDataURL();
     var screenshot = document.getElementsByClassName("screenshot")[0];
     screenshot.src = dataURL;
-    debugger
 }
 
 var playbackControl = document.querySelector('.playback-rate-control');
 var playbackValue = document.querySelector('.playback-rate-value');
+var valueType = document.querySelector('.type-visual');
 
 
 playbackControl.oninput = function() {

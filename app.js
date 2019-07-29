@@ -15,24 +15,9 @@ var hbs = require('hbs');
 hbs.registerPartials(__dirname + '/views/partials');
 
 // the routes
-app.get("/analyser", function(req,res) {
-  res.render("analyser")
-})
 
-app.get("/decode", function(req,res) {
-  res.render("decode")
-})
-
-app.get("/bars", function(req,res) {
-  res.render("bars")
-})
-
-app.get("/combine", function(req,res) {
-  res.render("combine")
-})
-
-app.get("/combine-bars", function(req,res) {
-  res.render("combineBars")
+app.get("/edit", function(req,res) {
+  res.render("edit")
 })
 
 // the server

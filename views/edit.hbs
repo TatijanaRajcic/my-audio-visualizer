@@ -1,5 +1,5 @@
 <div class="canvas-container"> 
-  <canvas id="combine-canvas"></canvas>
+  <canvas id="visualiser-canvas"></canvas>
 </div>
 
 <div class="content-container">
@@ -9,9 +9,13 @@
     <input type="button" id="screenshot_button" value="Screenshot">
     <input class="playback-rate-control" type="range" min="0" max="5" step="0.05" value="1">
     <span class="playback-rate-value">1.0</span>
+    <select name="type-visual" class="type-visual">
+      <option value="lines" default>lines</option>
+      <option value="bars">bars</option>
+    </select>
   </p>
 
   <img class="screenshot" src="" alt="">
 </div>
 
-<script src="javascript/combine.js"></script>
+<script src="javascript/visualiser.js"></script>
