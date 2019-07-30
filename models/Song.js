@@ -9,7 +9,10 @@ const songSchema = new Schema({
     type: ObjectId, 
     ref: "User" // NAME OF MODEL
   },
-  effects: Array
+  effects: [{ 
+    type : ObjectId, 
+    ref: 'Effect' 
+  }]
 });
 
 const Song = mongoose.model("Song", songSchema, "songs");

@@ -5,7 +5,6 @@ const Effects = require("../../models/Effect");
 
 router.get("/:id", function(req,res) {
   let songId = req.params.id;
-  debugger
   Songs.findById(songId)
     .then(song => {
       let songPath = song.path;

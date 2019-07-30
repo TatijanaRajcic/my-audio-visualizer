@@ -63,6 +63,7 @@ app.use('/', require('./routes/home'));
 app.use('/search', require('./routes/search'));
 
 // songs' routes
+app.use("/show", require("./routes/songs/show"))
 app.use('/add', upload.single("song"), require('./routes/songs/add'));
 app.use('/edit', require('./routes/songs/edit'));
 
