@@ -20,9 +20,9 @@ router.post("/:id", function(req, res, next) {
       Effects.create({playback: 3, song: song._id})
         .then((effect)=>{
           debugger
-          Songs.findByIdAndUpdate(songId, {$push: { effects: effect }}, {new: true})
+          Songs.findByIdAndUpdate(songId, {$push: { effects: effect._id }}, {new: true})
             .then(result=>{
-            res.redirect("/")
+            /* res.redirect("/") */
             })
         })        
       })
