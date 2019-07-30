@@ -71,10 +71,8 @@ app.use('/edit', require('./routes/songs/edit'));
 app.use('/login', require('./routes/users/login'));
 app.use('/signup', require('./routes/users/signup'));
 app.use('/logout', require('./routes/users/logout'));
-
-// effects' routes
-
-
+app.use('/profile', require('./routes/users/profile'));
+app.use('/index', require('./routes/users/index'));
 
 // Limit the access to routes to logged in users
 

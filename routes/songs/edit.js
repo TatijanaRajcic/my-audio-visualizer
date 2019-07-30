@@ -13,12 +13,12 @@ router.get("/:id", function(req,res) {
 })
 
 router.post("/:id", function(req, res, next) {
+  let playback = req.body.playback;
   let songId = req.params.id;
   Songs.findById(songId)
     .then((song)=>{
-      Effects.create({playback: 3, song: song._id})
+      Effects.create({playback: playback, song: song._id})
         .then((effect)=>{
-          debugger
           Songs.findByIdAndUpdate(songId, {$push: { effects: effect._id }}, {new: true})
             .then(result=>{
             /* res.redirect("/") */

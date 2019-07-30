@@ -1,3 +1,9 @@
+{{song.name}}
+
 {{#each effects}}
-  {{this.playback}}
+
+  {{> details playback = this.playback path = this.song.path index = @index}}
+
 {{/each}}
+
+<button><a href="/edit/{{song._id}}">Keep editing the song</a></button>

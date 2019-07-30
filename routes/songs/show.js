@@ -8,8 +8,12 @@ router.get("/:id", function(req,res) {
   Songs.findById(songId)
     .populate("effects")
     .then(song=>{
-      let effects = song.effects;
-      res.render("songs/show", {effects})
+      debugger
+      Effects.find({song:song})
+        .populate("song")
+        .then(effects=> {
+          res.render("songs/show", {song, effects})
+        })
     })
     .catch(err=>{
       res.send(err)
@@ -17,5 +21,4 @@ router.get("/:id", function(req,res) {
 })
 
 module.exports = router;
-
 
