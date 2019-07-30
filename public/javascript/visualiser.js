@@ -22,7 +22,7 @@ var audioData = null;
 var audioPlaying = false;
 var sampleSize = 1024;  // number of samples to collect before analyzing data
 var amplitudeArray;     // array to hold time domain data
-var audioUrl = "/songs/anyway.mp3"; // This must be hosted on the same server as this page - otherwise you get a Cross Site Scripting error
+var audioUrl = `/songs/${songPath}`; // This must be hosted on the same server as this page - otherwise you get a Cross Site Scripting error
 
 // Global Variables for the Graphics
 var canvasWidth  = 1000;
