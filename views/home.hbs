@@ -1,21 +1,16 @@
-<h1>Freesound API javascript example</h1>
+<h1>Sound Editing Experience</h1>
 <div id="error" style="color:red"></div>
 
 
 <h2>SEARCH</h2>
 <form action="/" method="post">
-    <label>Query:</label>
-    <input id="queryInput" type="text" name="searched">
-    <button id="queryBtn">SEARCH</button>
+    <input class="queryInput" type="text" name="searched">
+    <button class="queryBtn">SEARCH</button>
 </form>
-<div id="resp2"></div>
+<br>
 
-<hr>
-<h2>Example 2</h2>
-<div id="resp1"></div>
-<hr>
-
-<div class="form-container">
+<h2>UPLOAD</h2>
+<div class="form-container"></div>
   <form action="/add" method="POST" enctype="multipart/form-data">
     <input type="file" name="song">
     <button type="submit">Done!</button>

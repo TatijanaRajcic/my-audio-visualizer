@@ -1,10 +1,10 @@
 window.onload = function(){
 
-    freesound.setToken("BCYefiAia4XtdKxbNf5oy1DnkSpwhcYiZlquJ63o");
+    //freesound.setToken("BCYefiAia4XtdKxbNf5oy1DnkSpwhcYiZlquJ63o");
     //var query = freesound.textSearch("dogs")
     //console.log(query)
     //var soundId = sound.id;
-    var fields = 'id,name,url';
+    //var fields = 'id,name,url';
     // Example 1
     // Example of geeting the info of a sound, queying for similar sounds (content based) and showing some analysis
     // features. Both similar sounds and analysis features are obtained with additional requests to the api.
@@ -56,28 +56,28 @@ window.onload = function(){
     
     // Example 2
     // Example of searching sounds: querying the freesound db for sounds
-    $("#query-btn").click(function(){
-        debugger
-        var query = $("#query-input")[0].value;
-        var page = 1
-        var filter = "duration:[0 TO 60]"
-        var sort = "rating_desc"
-        freesound.textSearch(query, {page:page, filter:filter, sort:sort, fields:fields},
-            function(sounds){
-                var msg = ""
+    // $("#queryBtn").click(function(){
+    //     debugger
+    //     var query = $("#queryInput")[0].value;
+    //     var page = 1
+    //     var filter = "duration:[0 TO 60]"
+    //     var sort = "rating_desc"
+    //     freesound.textSearch(query, {page:page, filter:filter, sort:sort, fields:fields},
+    //         function(sounds){
+    //             var msg = ""
                 
-                msg += "Num results: " + sounds.count + "<br><ul>"
-                for (i =0;i<=14;i++){  
-                    var snd = sounds.getSound(i);
-                    msg += "<li>" + snd.name + " by " + snd.username + " with id: " + snd.id + "</li>"
-                    // msg += "<img src='" + snd.images.waveform_l + "'>";
-                    console.log(snd);
-                }
-                msg += "</ul>"
+    //             msg += "Num results: " + sounds.count + "<br><ul>"
+    //             for (i =0;i<=14;i++){  
+    //                 var snd = sounds.getSound(i);
+    //                 msg += "<li>" + snd.name + " by " + snd.username + " with id: " + snd.id + "</li>"
+    //                 // msg += "<img src='" + snd.images.waveform_l + "'>";
+    //                 console.log(snd);
+    //             }
+    //             msg += "</ul>"
                 
-                $("#freesoundPartial").innerHTML = msg;
-            },function(){ $("#error").innerHTML = "Error while searching..."}
-        );
-    })
+    //             $("#freesoundPartial").innerHTML = msg;
+    //         },function(){ $("#error").innerHTML = "Error while searching..."}
+    //     );
+    // })
   
 };
