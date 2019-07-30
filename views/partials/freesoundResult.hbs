@@ -1,5 +1,22 @@
-<div class="freesoundPartial">            
-    <p>Num results:  {{sound.count}} </p><br>
-    <p>{{sound.name}} by {{sound.username}} with id: {{sound.id}}</p>
-    <img src="{{sound.images.waveform_l}}">
+<div class="freesoundPartial">      
+
+    <h2>{{this.name}} by {{this.username}}</h2>
+    <img src="{{this.images.spectral_l}}">
+
+    <audio id="{{this.id}}" style="display: none" controls>
+        <source src="{{this.previews.preview-hq-mp3}}" type="audio/mpeg">
+    </audio>
+
+  <button onclick="play({{this.id}})">PLAY</button>
+  <button onclick="pause({{this.id}})">PAUSE</button>
+  <button><a href="/apiv2/sounds/{{this.id}}/download/">EDIT</a></button>
+
 </div>
+
+<script>
+
+    var id = "{{this.id}}"
+    function play(id){document.getElementById(id).play()}
+    function pause(id){document.getElementById(id).pause()}
+
+</script>

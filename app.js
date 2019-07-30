@@ -8,7 +8,7 @@ const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const multer = require("multer");
 const app = express()
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: true }))
 
 // Connection to the database "soundEditing"
 mongoose.connect('mongodb://localhost/soundEditing', { useNewUrlParser: true })
@@ -60,6 +60,7 @@ let upload = multer({ dest: "public/songs" });
 // the routes
 
 app.use('/', require('./routes/home'));
+app.use('/search', require('./routes/search'));
 
 // songs' routes
 app.use('/add', upload.single("song"), require('./routes/songs/add'));
