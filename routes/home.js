@@ -19,7 +19,7 @@ router.get('/apiv2/sounds/:id/download', function (req, res, next) {
     //use our sound model and create new sound.
     Songs.create({name: fileName, path: filePath, user: req.session.currentUser._id})
     .then((song)=> {
-      res.redirect('/edit');
+      res.redirect('/edit/:song_id');
     })
     .catch((error)=> {
       next(error)
