@@ -61,12 +61,17 @@ let upload = multer({ dest: "public/songs" });
 
 app.use('/', require('./routes/home'));
 
+// songs' routes
 app.use('/add', upload.single("song"), require('./routes/songs/add'));
 app.use('/edit', require('./routes/songs/edit'));
 
+// users' routes
 app.use('/login', require('./routes/users/login'));
 app.use('/signup', require('./routes/users/signup'));
 app.use('/logout', require('./routes/users/logout'));
+
+// effects' routes
+
 
 
 // Limit the access to routes to logged in users
