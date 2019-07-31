@@ -33,6 +33,7 @@ class playCtx {
       );
     }.bind(this);
     request.send();
+    debugger
     return source;
   }
 }

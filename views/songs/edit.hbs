@@ -6,24 +6,24 @@
   <p class="controls">
     <input type="button" id="start_button" value="Start">
     <input type="button" id="stop_button" value="Stop">
-    <input type="button" id="screenshot_button" value="Screenshot">
     <select name="type-visual" class="type-visual">
       <option value="lines" default>lines</option>
       <option value="bars">bars</option>
     </select>
+    <input type="color" id="color-visual" value="#00CCFF">
   </p>
 
   <form action="/edit/{{songId}}" method="post">
     <input class="playback-rate-control" name="playback" type="range" min="0" max="5" step="0.05" value="1">
     <span class="playback-rate-value">1.0</span>
-    <button type="submit" class="btn-link">Save effects</button>
+    <input class="screenshot" name="src" value="" hidden>
+    <button type="submit" class="btn-link" id="save_button">Save effects</button>
   </form>
 
   <form action="/show/{{songId}}">
     <button type="submit" class="btn-link">See all versions of my song</button>
   </form>
 
-  <img class="screenshot" src="" alt="">
 </div>
 
 <script>

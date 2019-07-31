@@ -9,6 +9,7 @@ const effectSchema = new Schema({
     type: ObjectId, 
     ref: "Song" // NAME OF MODEL
   },
+  image: String
 });
 
 const Effect = mongoose.model("Effect", effectSchema, "effects");

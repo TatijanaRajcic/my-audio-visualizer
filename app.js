@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const hbs = require('hbs');
 const bodyParser = require('body-parser');
 const session    = require("express-session");
-/* const MongoStore = require("connect-mongo")(session); */
+const MongoStore = require("connect-mongo")(session);
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const multer = require("multer");
@@ -24,6 +24,11 @@ app.use(cors())
 // configuring express session
 app.use(session({
   secret: 'super secret',
+  cookie: {maxAge: 60000},
+  store: new MongoStore({
+    mongooseConnection: mongoose.connection,
+    ttl: 24 * 60 // 1day
+  }),
   resave: false,
   saveUninitialized: true,
 }))

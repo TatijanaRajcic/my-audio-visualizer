@@ -28,9 +28,11 @@ var audioUrl = `/songs/${songPath}`; // This must be hosted on the same server a
 var canvasWidth  = 1000;
 var canvasHeight = 150;
 var ctx;
+var color = document.getElementById('color-visual');
 
 // Global Variables for Inputs
 var playbackControl = document.querySelector('.playback-rate-control');
+playbackControl.setAttribute('disabled', 'disabled');
 var playbackValue = document.querySelector('.playback-rate-value');
 var valueType = document.querySelector('.type-visual');
 
@@ -80,7 +82,7 @@ function onError(e) {
 
 function drawTimeDomainBars() {
   clearCanvas();
-  ctx.fillStyle = '#00CCFF'; // Color of the bars
+  ctx.fillStyle = color.value; // Color of the bars
   bars = 100;
   for (var i = 0; i < bars; i++) {
     bar_x = i * 3;
@@ -96,7 +98,7 @@ function drawTimeDomainLines() {
     for (var i = 0; i < amplitudeArray.length; i++) {
         var value = amplitudeArray[i] / 256;
         var y = canvasHeight - (canvasHeight * value) - 1;
-        ctx.fillStyle = "#00CCFF"; //color of the lines
+        ctx.fillStyle = color.value; //color of the lines
         ctx.fillRect(i, y, 1, 1);
     }
 }
@@ -109,7 +111,7 @@ function screenshotCanvas() {
     var canvas = document.getElementById('visualiser-canvas');
     var dataURL = canvas.toDataURL();
     var screenshot = document.getElementsByClassName("screenshot")[0];
-    screenshot.src = dataURL;
+    screenshot.value = dataURL;
 }
 
 // Execute
@@ -146,16 +148,19 @@ $(document).ready(function() {
         } else {
             playSound(audioData);
         }
+        $("#start_button").attr('disabled', 'disabled');
+        playbackControl.removeAttribute('disabled');
     });
     // Stop the audio playing
     $("#stop_button").on('click', function(e) {
         e.preventDefault();
         sourceNode.stop(0);
+        $("#start_button").removeAttr('disabled');
+        playbackControl.setAttribute('disabled', 'disabled');
         audioPlaying = false;
     });
 
-    $("#screenshot_button").on('click', function(e) {
-        e.preventDefault();
+    $("#save_button").on('click', function(e) {
         screenshotCanvas()
     });
 });
