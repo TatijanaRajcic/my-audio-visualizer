@@ -8,7 +8,6 @@ router.get("/:id", function(req,res) {
   Songs.findById(songId)
     .populate("effects")
     .then(song=>{
-      debugger
       Effects.find({song:song})
         .populate("song")
         .then(effects=> {

@@ -11,7 +11,7 @@ const app = express()
 app.use(bodyParser.urlencoded({ extended: true }))
 
 // Connection to the database "soundEditing"
-mongoose.connect('mongodb://localhost/soundEditing', { useNewUrlParser: true })
+mongoose.connect('mongodb://127.0.0.1/soundEditing', { useNewUrlParser: true })
   .then(() => {
     console.log('Connected to Mongo!');
   }).catch(err => {

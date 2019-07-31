@@ -1,43 +1,8 @@
-<p>
-{{playback}}
-<input type="button" class="start_button_details" value="Start">
-<input type="button" class="stop_button_details" value="Stop">
-</p>
-
-<script>
-  var songPath = "{{path}}"; 
-  var songPlayback = "{{playback}}";
-  var index = "{{index}}";
-  debugger
-</script>
-<script src="/javascript/player.js"></script>
-
-{{!-- <p>
-{{playback}}
-<input type="button" class="start_button_details" value="Start">
-<input type="button" class="stop_button_details" value="Stop">
-</p>
-
-<script src="/javascript/playerbis.js"></script>
-<script>
-  var player = new playCtx();
-  player.songPath = "{{path}}";
-  player.songPlayback = "{{playback}}";
-  player.index = "{{index}}";
-
-  var playButtons = $('.start_button_details');
-  var stopButtons = $('.stop_button_details');
-
-  playButtons.click(function(){
-    var playerIndex = playButtons.index(this);
-    player.getData();
-    player.source.start(0);
-  });
-
-  stopButtons.click(function(){
-    var playerIndex = stopButtons.index(this);
-    player.source.stop(0);
-  });
-
-</script> --}}
+<div>
+  <p class="playback" value="{{playback}}">{{playback}}</p>
+  <p class="path" value="{{path}}">{{path}}</p>
+  <p class="index" value="{{index}}">{{index}}</p>
+  <input type="button" class="start_button_details" value="Start">
+  <input type="button" class="stop_button_details" value="Stop">
+</div>
 

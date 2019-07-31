@@ -7,3 +7,44 @@
 {{/each}}
 
 <button><a href="/edit/{{song._id}}">Keep editing the song</a></button>
+
+
+<script src="/javascript/playerbis.js"></script>
+
+<script>
+  var playButtons = $('.start_button_details');
+  var stopButtons = $('.stop_button_details');
+  var sounds = {}
+
+  for(var i = 0; i<playButtons.length ; i++){
+    playButtons[i].onclick = play;
+  }
+
+  for(var i = 0; i<stopButtons.length ; i++){
+    stopButtons[i].onclick = stop;
+  }
+  
+  var player = new playCtx();
+
+  function play(e){
+    var song = e.currentTarget.parentNode;
+
+    var songPath = $(song).children(".path").attr("value");
+
+    var playback = $(song).children(".playback").attr("value");
+
+    let source = player.getData(songPath, playback)
+    sounds[songPath] = source
+  }
+
+  function stop(e){
+    var song = e.currentTarget.parentNode;
+    var songPath = $(song).children(".path").attr("value");
+    let source = sounds[songPath];
+    if(source) {
+      source.stop(0)
+    }
+  }
+
+</script>
+
