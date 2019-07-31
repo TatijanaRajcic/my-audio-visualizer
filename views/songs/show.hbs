@@ -2,7 +2,7 @@
 
 {{#each effects}}
 
-  {{> details playback = this.playback path = this.song.path index = @index}}
+  {{> details id = this._id playback = this.playback path = this.song.path songId = song._id}}
 
 {{/each}}
 

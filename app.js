@@ -74,6 +74,9 @@ app.use('/logout', require('./routes/users/logout'));
 app.use('/profile', require('./routes/users/profile'));
 app.use('/index', require('./routes/users/index'));
 
+// effects' routes
+app.use('/delete', require("./routes/effects/delete"))
+
 // Limit the access to routes to logged in users
 
 function accessControl(req, res, next) { 
