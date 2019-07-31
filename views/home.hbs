@@ -2,6 +2,7 @@
 <div id="error" style="color:red"></div>
 
 
+{{#if currentUser}}
 <h2>SEARCH</h2>
 <form action="/" method="post">
     <input class="queryInput" type="text" name="searched">
@@ -17,6 +18,8 @@
   </form>
 </div>
 
-<a href="/profile/{{currentUser._id}}">Profile</a>
+{{else}}
+<button><a href="/login">Log in</a></button>
+<button><a href="/signup">Sign up</a></button>
 
-<a href="/index">All profiles</a>
+{{/if}}

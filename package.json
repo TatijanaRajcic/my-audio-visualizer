@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js",
-    "debug": "nodemon --inspect app.js"
+    "start": "nodemon app.js -e 'hbs js'",
+    "debug": "nodemon --inspect app.js -e 'hbs js'"
   },
   "author": "",
   "license": "ISC",

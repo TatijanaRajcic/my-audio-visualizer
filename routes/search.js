@@ -10,8 +10,7 @@ router.get("/", function(req,res) {
     axios.get(`https://freesound.org/apiv2/search/text/?query=${query}&token=${token}&fields=${fields}&filter=${filter}`)
     .then(function (response) {
       var data = response.data;
-      var results = response.data.results;    
-      res.render("search", {query, data, results})
+      res.render("search", {query, data})
     })
     .catch(function (error) {
       console.log(error);

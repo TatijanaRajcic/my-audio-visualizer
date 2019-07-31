@@ -1,0 +1,11 @@
+{{#if currentUser}}
+
+<div class="navbar">
+    <ul>
+        <li><a href="/index">Users</a></li>
+        <li><a href="/profile/{{currentUser._id}}">Profile</a></li>
+        <li><a href="/logout">Logout</a></li>
+    </ul>
+</div>
+
+{{/if}}

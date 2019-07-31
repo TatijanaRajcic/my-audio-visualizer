@@ -4,8 +4,8 @@
 </form>
 
 <div id="searchResults">
-    <h2>Num results:  {{data.count}} </h2>
-    {{#each results}}
+    <h2>Num results:  {{data.count}}</h2>
+    {{#each data.results}}
         {{> freesoundResult}}
     {{/each}}
 </div>
