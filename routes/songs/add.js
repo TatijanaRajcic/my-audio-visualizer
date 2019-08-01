@@ -9,8 +9,7 @@ var Path = require("path");
 router.get('/', function(req, res, next) {
   var download = req.query.download;
   var id = req.query.id;
-  var name = req.query.name;
-  debugger 
+  var name = req.query.name; 
   axios({
       method: "GET",
       responseType: 'stream',
@@ -26,7 +25,6 @@ router.get('/', function(req, res, next) {
         .then((song)=> {
           song.path = id;
           song.save();
-          debugger
           res.redirect(`/edit/${song._id}`);
 
         }) 

@@ -56,3 +56,17 @@ a{
   padding: 1em;
   margin: 0;
 }
+
+.homePanel{
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  justify-content: space-around;
+}
+
+.homePanel div{
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  justify-content: space-around;
+}
