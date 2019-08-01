@@ -3,7 +3,7 @@ const Schema   = mongoose.Schema;
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const effectSchema = new Schema({
-  distorsion: Number,
+  reverb: Number,
   playback: Number,
   song: {
     type: ObjectId, 

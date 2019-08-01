@@ -1,5 +1,18 @@
 <form action="/" method="post">
     <input class="queryInput" type="text" name="searched" value="{{query}}">
+    <input class="duration" type="range" min="1" max="500" value="{{duration}}" class="slider" name="duration">
+    <span class="duration-value">Duration: {{duration}}</span>
+    <select name="sort">
+        <option value="score">Sort</option>
+        <option value="duration_desc">Longest</option>
+        <option value="duration_asc">Shortest</option>
+        <option value="created_desc">Newest</option>
+        <option value="created_asc">Oldest</option>
+        <option value="downloads_desc">Most Downloaded</option>
+        <option value="downloads_asc">Least Downloaded</option>
+        <option value="rating_desc">Highest Rated</option>
+        <option value="rating_asc">Lowest Rated</option>        
+      </select>
     <button class="queryBtn">SEARCH MORE</button>
 </form>
 
@@ -9,3 +22,14 @@
         {{> freesoundResult}}
     {{/each}}
 </div>
+
+<script>
+
+$('input[type=range]').on('input', function () {
+    var newDuration = $(this).val();
+    document.querySelector('.duration-value').innerHTML = `Duration: ${newDuration}`;
+});
+
+
+
+</script>

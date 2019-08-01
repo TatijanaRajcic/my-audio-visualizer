@@ -18,6 +18,7 @@ var audioBuffer;
 var sourceNode;
 var analyserNode;
 var javascriptNode;
+var convolverGain;
 var audioData = null;
 var audioPlaying = false;
 var sampleSize = 1024;  // number of samples to collect before analyzing data
@@ -35,6 +36,9 @@ var playbackControl = document.querySelector('.playback-rate-control');
 playbackControl.setAttribute('disabled', 'disabled');
 var playbackValue = document.querySelector('.playback-rate-value');
 var valueType = document.querySelector('.type-visual');
+var convolverGainControl = document.querySelector('.convolver-gain-control');
+var convolverGainValue = document.querySelector('.convolver-gain-value');
+convolverGainControl.setAttribute('disabled', 'disabled');
 
 // Functions
 
@@ -42,9 +46,19 @@ function setupAudioNodes() {
     sourceNode     = audioContext.createBufferSource();
     analyserNode   = audioContext.createAnalyser();
     javascriptNode = audioContext.createScriptProcessor(sampleSize, 1, 1);
+    // convolverGain = audioContext.createGain();
+    // convolverNode = audioContext.createConvolver();
+    // masterGain = audioContext.createGain();
+    // masterCompression = audioContext.createDynamicsCompressor();
     // Create the array for the data values
     amplitudeArray = new Uint8Array(analyserNode.frequencyBinCount);
     // Now connect the nodes together
+    // sourceNode.loop = true;
+    // sourceNode.connect(convolverGain);
+    // sourceNode.connect(convolverNode);
+    // sourceNode.connect(masterGain);
+    // masterGain.connect(masterCompression);
+    // masterCompression.connect(audioContext.destination);
     sourceNode.connect(audioContext.destination);
     sourceNode.connect(analyserNode);
     analyserNode.connect(javascriptNode);
@@ -55,7 +69,7 @@ function setupAudioNodes() {
 // Note that the audio load is asynchronous
 
 function loadSound(url) {
-    var request = new XMLHttpRequest();
+    request = new XMLHttpRequest();
     request.open('GET', url, true);
     request.responseType = 'arraybuffer';
     // When loaded, decode the data and play the sound
@@ -66,7 +80,38 @@ function loadSound(url) {
         }, onError);
     }
     request.send();
+    // getImpulse();
+    // document.querySelector('.convolver-gain-control').value = '0';
+    // document.querySelector('.convolver-gain-control').addEventListener('change', function() {
+    // convolverGainControl.value = this.value;
+    // });
 }
+
+// function getImpulse() {
+//     convolver = audioContext.createConvolver(); 
+//     ajaxRequest = new XMLHttpRequest();
+//     ajaxRequest.open('GET', audioUrl, true);
+//     ajaxRequest.responseType = 'arraybuffer';
+  
+//     ajaxRequest.onload = function() {
+//       var impulseData = ajaxRequest.response;
+  
+//       audioContext.decodeAudioData(impulseData, function(buffer) {
+//           myImpulseBuffer = buffer;
+//           convolver.buffer = myImpulseBuffer;
+//           convolver.loop = true;
+//           convolver.normalize = true;
+//           convolverGain.gain.value = 3;
+//           convolverGain.connect(convolver);
+//           convolver.connect(masterGain);
+//         },
+  
+//         function(e){"Error with decoding audio data" + e.err});
+  
+//     }
+  
+//     ajaxRequest.send();
+//   }
 
 // Play the audio and loop until stopped
 function playSound(buffer) {
@@ -133,7 +178,7 @@ $(document).ready(function() {
         // setup the event handler that is triggered every time enough samples have been collected
         // trigger the audio analysis and draw the results
         javascriptNode.onaudioprocess = function () {
-            // get the Time Domain data for this sample
+            // get the Time Domain data for this sampleaudioContext
             analyserNode.getByteTimeDomainData(amplitudeArray);
             // draw the display if the audio is playing
             if (audioPlaying == true && valueType.value === "bars") {
@@ -150,6 +195,7 @@ $(document).ready(function() {
         }
         $("#start_button").attr('disabled', 'disabled');
         playbackControl.removeAttribute('disabled');
+        // convolverGainControl.removeAttribute('disabled');
     });
     // Stop the audio playing
     $("#stop_button").on('click', function(e) {
@@ -157,6 +203,7 @@ $(document).ready(function() {
         sourceNode.stop(0);
         $("#start_button").removeAttr('disabled');
         playbackControl.setAttribute('disabled', 'disabled');
+        // convolverGainControl.setAttribute('disabled', 'disabled');
         audioPlaying = false;
     });
 
@@ -169,3 +216,8 @@ playbackControl.oninput = function() {
     sourceNode.playbackRate.value = playbackControl.value;
     playbackValue.innerHTML = playbackControl.value;
 }
+
+convolverGainControl.oninput = function() {
+    convolverGain.gain.value = convolverGainControl.value;
+    convolverGainValue.innerHTML = convolverGainControl.value;
+  }

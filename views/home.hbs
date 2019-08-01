@@ -10,6 +10,10 @@
 <h2>SEARCH</h2>
   <form action="/" method="post">
       <input class="queryInput" type="text" name="searched">
+      <input class="duration" type="number" name="duration" value="60" style="display: none">
+      <select name="sort" style="display: none">
+        <option value="score" selected>Sort</option>       
+      </select>
       <button class="queryBtn">SEARCH</button>
   </form>
   <br>

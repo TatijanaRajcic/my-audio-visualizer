@@ -16,6 +16,8 @@
   <form action="/edit/{{songId}}" method="post">
     <input class="playback-rate-control" name="playback" type="range" min="0" max="5" step="0.05" value="1">
     <span class="playback-rate-value">1.0</span>
+    <input class="convolver-gain-control" name="reverb" type="range" min="-3" max="3" step="0.05" value="0">
+    <span class="convolver-gain-value">0</span>
     <input class="screenshot" name="src" value="" hidden>
     <button type="submit" class="btn-link" id="save_button">Save effects</button>
   </form>
