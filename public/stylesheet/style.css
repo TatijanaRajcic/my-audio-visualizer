@@ -1,18 +1,231 @@
-body{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  font-family: 'Orbitron', sans-serif;
+/* GENERAL */
+
+html, body { 
   margin:0;
   padding:0;
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+  font-family: 'Orbitron', sans-serif;
   color:black;
+  min-height: 100vh;
+  background-color:black;
 }
 
 a{
   text-decoration: none;
-  color: black;
+  color:white;
+  font-family: 'Orbitron', sans-serif;
 }
+
+button, input{
+  font-family: 'Orbitron', sans-serif;
+}
+
+button {
+  border-radius: 10px;
+}
+
+.main{
+  flex: 1;
+}
+
+.bg-img {
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* NAV BAR */
+
+.navbar{
+  display: flex;
+  background-color:#1F1C23;
+  justify-content: space-around;
+  width: 100%;
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+}
+
+.navbar ul{
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar li{
+  display: flex;
+  flex-direction: row;
+  padding: 1em;
+  margin: 0;
+}
+
+/* HOME PAGE */
+
+.home-container{
+  background-image: url("../images/bg9.jpg");
+  color:white;  
+}
+
+.home-container-login{
+  background-image: url("../images/bg5.jpg");
+  color:white;  
+}
+
+.home-content-container{
+  text-align: center;
+  display:flex;
+  flex-direction:column
+}
+
+.typed-title{
+  height:25vh;
+}
+
+.btn-home{
+  background-color:white;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.btn-home a{
+  color:black;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: bold;
+}
+
+.label-file {
+  cursor: pointer;
+  color:black
+}
+
+.input-file {
+  display: none;
+}
+
+/* EDIT PAGE */
+
+.edit-page{
+  display:flex;
+  justify-content: flex-end;
+  height:100vh;
+  width:100vw;
+}
+
+.edit-content-container{
+  padding-top:48px;
+  color:white;
+  display:flex;
+  flex-direction: column;
+  width:25%;
+  background-color:rgba(255, 255, 255, 0.3);
+  justify-content: space-around;
+  align-items:center;
+  text-align:center
+}
+
+.edit-content-container h1{
+  font-size:0.9em;
+  font-weight: bold
+}
+
+.playback-container{
+  display:flex;
+  width:100%;
+  align-items:center;
+}
+
+.playback-rate-control{
+  width:80%;
+}
+
+.playback-rate-value{
+  width:20%;
+}
+
+.creative-dashboard > div, .music-dashboard > div {
+  padding:2%;
+}
+
+#start_button, #stop_button {
+  border-radius: 10px;
+}
+
+.controls{
+  display:flex;
+  flex-direction:column;
+}
+
+.controls input {
+  margin:4%;
+}
+
+
+/* SHOW PAGE */
+.show-page-container{
+  color:white;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content: center;
+  text-align:center;
+}
+
+.show-page-container h1{
+  width:100%;
+  text-align:center;
+}
+
+.show-song-container{
+  width:45%;
+}
+
+.song-img {
+  display:flex;
+  width:100%;
+  justify-content: center;
+}
+
+.song-img img {
+  width:80%
+}
+
+.controls-song{
+  display:flex;
+  justify-content: center;
+}
+
+.controls-song a {
+  color:black;
+}
+
+.start_button_details, .stop_button_details {
+  border-radius: 10px;
+}
+
+.edit-song-button{
+  display:flex;
+  justify-content: center;
+  padding:5%;
+}
+
+.edit-song-button button {
+  padding:2%;
+}
+
+.edit-song-button a {
+  color:black
+}
+
+/* OTHER */
 
 #visualiser-canvas {
   margin-left: auto;
@@ -36,38 +249,4 @@ a{
   left:12px;
   top:10px;
   color: white;
-}
-
-.navbar{
-  display: flex;
-  width: 100vw;
-}
-
-.navbar ul{
-  display: flex;
-  flex-direction: row;
-  list-style: none; /* Remove list bullets */
-  padding: 0;
-  margin: 0;
-}
-
-.navbar li{
-  display: flex;
-  flex-direction: row;
-  padding: 1em;
-  margin: 0;
-}
-
-.homePanel{
-  display: flex;
-  flex-direction: row;
-  width: 100vw;
-  justify-content: space-around;
-}
-
-.homePanel div{
-  display: flex;
-  flex-direction: column;
-  width: 30%;
-  justify-content: space-around;
 }

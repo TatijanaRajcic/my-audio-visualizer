@@ -6,9 +6,11 @@ class playCtx {
 
   getData(songPath,songPlayback) {
     let source = this.audioCtx.createBufferSource();
+    debugger
     source.playbackRate.value = songPlayback;
     source.connect(this.audioCtx.destination);
     source.loop = true;
+  
     
     if (this.cache[songPath]) {
       source.buffer = buffer;

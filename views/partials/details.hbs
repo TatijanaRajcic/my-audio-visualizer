@@ -1,9 +1,13 @@
-<div>
-  <img src="{{image}}" alt="">
-  <p class="playback" value="{{playback}}">{{playback}}</p>
+<div class="show-song-container main">
+  <div class="song-img">
+    <img src="{{image}}" alt="">
+  </div>
+  <p class="playback" value="{{playback}}">Playback rate: {{playback}}</p>
   <p class="path" value="{{path}}" hidden>{{path}}</p>
-  <input type="button" class="start_button_details" value="Start">
-  <input type="button" class="stop_button_details" value="Stop">
-  <button><a href="/delete/{{id}}/{{songId}}">Delete version</a></button>
+  <div class="controls-song">
+    <input type="button" class="start_button_details" value="start">
+    <input type="button" class="stop_button_details" value="stop">
+    <button><a href="/delete/{{id}}/{{songId}}">delete</a></button>
+  </div>
 </div>
 
