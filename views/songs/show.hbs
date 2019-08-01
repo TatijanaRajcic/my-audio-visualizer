@@ -1,12 +1,19 @@
-{{song.name}}
+<div class="show-page-container">
+  <h1>All versions of : {{song.name}}</h1>
 
-{{#each effects}}
+  {{#each effects}}
 
-  {{> details id = this._id playback = this.playback path = this.song.path songId = song._id image = this.image}}
+    {{> details id = this._id playback = this.playback path = this.song.path songId = song._id image = this.image}}
 
-{{/each}}
+  {{/each}}
 
+</div>
+
+<div class="">
+
+</div>
 <button><a href="/edit/{{song._id}}">Keep editing the song</a></button>
+
 
 <script src="/javascript/player.js"></script>
 
@@ -26,9 +33,10 @@
   var player = new playCtx();
 
   function play(e){
-    var song = e.currentTarget.parentNode;
+    var song = e.currentTarget.parentNode.parentNode;
     var songPath = $(song).children(".path").attr("value");
     var playback = $(song).children(".playback").attr("value");
+    debugger
     let source = player.getData(songPath, playback);
     sounds[songPath] = source;
     var playBtn = $(song).children(".start_button_details");
@@ -36,7 +44,7 @@
   }
 
   function stop(e){
-    var song = e.currentTarget.parentNode;
+    var song = e.currentTarget.parentNode.parentNode;
     var songPath = $(song).children(".path").attr("value");
     let source = sounds[songPath];
     if(source) {

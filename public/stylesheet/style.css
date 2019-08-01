@@ -11,6 +11,7 @@ body{
   font-family: 'Orbitron', sans-serif;
   color:black;
   min-height: 100vh;
+  background-color:black;
 }
 
 a{
@@ -166,6 +167,48 @@ button {
 
 .controls input {
   margin:4%;
+}
+
+
+/* SHOW PAGE */
+.show-page-container{
+  color:white;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content: center;
+  text-align:center;
+}
+
+.show-page-container h1{
+  width:100%;
+  text-align:center;
+}
+
+.show-song-container{
+  width:45%;
+}
+
+.song-img {
+  display:flex;
+  width:100%;
+  justify-content: center;
+}
+
+.song-img img {
+  width:80%
+}
+
+.controls-song{
+  display:flex;
+  justify-content: center;
+}
+
+.controls-song a {
+  color:black;
+}
+
+.start_button_details, .stop_button_details {
+  border-radius: 10px;
 }
 
 /* OTHER */
