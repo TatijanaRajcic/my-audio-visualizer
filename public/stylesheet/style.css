@@ -211,6 +211,20 @@ button {
   border-radius: 10px;
 }
 
+.edit-song-button{
+  display:flex;
+  justify-content: center;
+  padding:5%;
+}
+
+.edit-song-button button {
+  padding:2%;
+}
+
+.edit-song-button a {
+  color:black
+}
+
 /* OTHER */
 
 #visualiser-canvas {
