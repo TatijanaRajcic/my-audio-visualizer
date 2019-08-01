@@ -2,7 +2,7 @@
 
 {{#each effects}}
 
-  {{> details playback = this.playback path = this.song.path index = @index}}
+  {{> details id = this._id playback = this.playback path = this.song.path songId = song._id image = this.image}}
 
 {{/each}}
 
@@ -28,13 +28,12 @@
 
   function play(e){
     var song = e.currentTarget.parentNode;
-
     var songPath = $(song).children(".path").attr("value");
-
     var playback = $(song).children(".playback").attr("value");
-
-    let source = player.getData(songPath, playback)
-    sounds[songPath] = source
+    let source = player.getData(songPath, playback);
+    sounds[songPath] = source;
+    var playBtn = $(song).children(".start_button_details");
+    playBtn.attr("disabled","disabled");
   }
 
   function stop(e){
@@ -44,7 +43,9 @@
     if(source) {
       source.stop(0)
     }
+    var playBtn = $(song).children(".start_button_details");
+    playBtn.removeAttr("disabled");
   }
-
 </script>
 
+{{!-- solve this so that we can play only one song at the time or several at the same time but be able to stop each of them --}}

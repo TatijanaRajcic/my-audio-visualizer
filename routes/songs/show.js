@@ -12,6 +12,7 @@ router.get("/:id", function(req,res) {
         .populate("song")
         .then(effects=> {
           res.render("songs/show", {song, effects})
+          debugger
         })
     })
     .catch(err=>{
