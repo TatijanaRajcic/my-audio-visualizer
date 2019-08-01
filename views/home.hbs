@@ -1,25 +1,41 @@
-<h1>Sound Editing Experience</h1>
-<div id="error" style="color:red"></div>
+<div class="{{#if login}}home-container-login {{else}}home-container{{/if}} main bg-img">
+  <div class="home-content-container">
+    <div class="typed-title">
+      <h1><span class="typed"></span></h1>
+    </div>
+    
+    <div>
+      {{#if currentUser}}
+      <h2>search</h2>
+      <form action="/" method="post">
+          <input class="queryInput" type="text" name="searched">
+          <button class="queryBtn">SEARCH</button>
+      </form>
+      <br>
 
+      <h2>upload</h2>
+      <div class="form-container"></div>
+        <form action="/add" method="POST" enctype="multipart/form-data">
+          <input type="file" name="song">
+          <button type="submit">Done!</button>
+        </form>
+      </div>
 
-{{#if currentUser}}
-<h2>SEARCH</h2>
-<form action="/" method="post">
-    <input class="queryInput" type="text" name="searched">
-    <button class="queryBtn">SEARCH</button>
-</form>
-<br>
+      {{else}}
+      <button><a href="/login">Log in</a></button>
+      <button><a href="/signup">Sign up</a></button>
 
-<h2>UPLOAD</h2>
-<div class="form-container"></div>
-  <form action="/add" method="POST" enctype="multipart/form-data">
-    <input type="file" name="song">
-    <button type="submit">Done!</button>
-  </form>
+      {{/if}}
+    </div>
+  </div>
 </div>
 
-{{else}}
-<button><a href="/login">Log in</a></button>
-<button><a href="/signup">Sign up</a></button>
 
-{{/if}}
+<script>
+  var typed = new Typed('.typed', {
+  strings: ["Sound exp", "Sound editing experience"],
+  typeSpeed: 30,
+  });
+
+  var typed = new Typed(".typed", options);
+</script>

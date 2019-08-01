@@ -3,6 +3,9 @@ const router  = express.Router();
 var Songs = require("../models/Song");
 
 router.get("/", (req, res, next) => {
+    if (req.session.currentUser){
+      res.locals.login = true;
+    }
     res.render('home');
   })
 
