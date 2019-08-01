@@ -9,9 +9,10 @@ const cors = require('cors');
 const multer = require("multer");
 const app = express()
 app.use(bodyParser.urlencoded({ extended: true }))
+require('dotenv').config()
 
 // Connection to the database "soundEditing"
-mongoose.connect('mongodb://127.0.0.1/soundEditing', { useNewUrlParser: true })
+mongoose.connect(process.env.DB, { useNewUrlParser: true })
   .then(() => {
     console.log('Connected to Mongo!');
   }).catch(err => {
