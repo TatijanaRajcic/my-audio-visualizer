@@ -46,24 +46,25 @@ function setupAudioNodes() {
     sourceNode     = audioContext.createBufferSource();
     analyserNode   = audioContext.createAnalyser();
     javascriptNode = audioContext.createScriptProcessor(sampleSize, 1, 1);
-    // convolverGain = audioContext.createGain();
-    // convolverNode = audioContext.createConvolver();
-    // masterGain = audioContext.createGain();
-    // masterCompression = audioContext.createDynamicsCompressor();
+    convolverGain = audioContext.createGain();
+    convolverNode = audioContext.createConvolver();
+    masterGain = audioContext.createGain();
+    masterCompression = audioContext.createDynamicsCompressor();
     // Create the array for the data values
     amplitudeArray = new Uint8Array(analyserNode.frequencyBinCount);
     // Now connect the nodes together
-    // sourceNode.loop = true;
-    // sourceNode.connect(convolverGain);
-    // sourceNode.connect(convolverNode);
-    // sourceNode.connect(masterGain);
-    // masterGain.connect(masterCompression);
-    // masterCompression.connect(audioContext.destination);
+    sourceNode.loop = true;
+    sourceNode.connect(convolverGain);
+    sourceNode.connect(convolverNode);
+    sourceNode.connect(masterGain);
+    masterGain.connect(masterCompression);
+    masterCompression.connect(audioContext.destination);
     sourceNode.connect(audioContext.destination);
     sourceNode.connect(analyserNode);
     analyserNode.connect(javascriptNode);
     javascriptNode.connect(audioContext.destination);
     sourceNode.playbackRate.value = playbackControl.value
+    convolverGain.gain.value = convolverGainControl.value;
 }
 // Load the audio from the URL via Ajax and store it in global variable audioData
 // Note that the audio load is asynchronous
@@ -80,38 +81,38 @@ function loadSound(url) {
         }, onError);
     }
     request.send();
-    // getImpulse();
-    // document.querySelector('.convolver-gain-control').value = '0';
-    // document.querySelector('.convolver-gain-control').addEventListener('change', function() {
-    // convolverGainControl.value = this.value;
-    // });
+    getImpulse();
+    document.querySelector('.convolver-gain-control').value = '0';
+    document.querySelector('.convolver-gain-control').addEventListener('change', function() {
+    convolverGainControl.value = this.value;
+    });
 }
 
-// function getImpulse() {
-//     convolver = audioContext.createConvolver(); 
-//     ajaxRequest = new XMLHttpRequest();
-//     ajaxRequest.open('GET', audioUrl, true);
-//     ajaxRequest.responseType = 'arraybuffer';
+function getImpulse() {
+    convolver = audioContext.createConvolver(); 
+    ajaxRequest = new XMLHttpRequest();
+    ajaxRequest.open('GET', audioUrl, true);
+    ajaxRequest.responseType = 'arraybuffer';
   
-//     ajaxRequest.onload = function() {
-//       var impulseData = ajaxRequest.response;
+    ajaxRequest.onload = function() {
+      var impulseData = ajaxRequest.response;
   
-//       audioContext.decodeAudioData(impulseData, function(buffer) {
-//           myImpulseBuffer = buffer;
-//           convolver.buffer = myImpulseBuffer;
-//           convolver.loop = true;
-//           convolver.normalize = true;
-//           convolverGain.gain.value = 3;
-//           convolverGain.connect(convolver);
-//           convolver.connect(masterGain);
-//         },
+      audioContext.decodeAudioData(impulseData, function(buffer) {
+          myImpulseBuffer = buffer;
+          convolver.buffer = myImpulseBuffer;
+          convolver.loop = true;
+          convolver.normalize = true;
+          convolverGain.gain.value = 3;
+          convolverGain.connect(convolver);
+          convolver.connect(masterGain);
+        },
   
-//         function(e){"Error with decoding audio data" + e.err});
+        function(e){"Error with decoding audio data" + e.err});
   
-//     }
+    }
   
-//     ajaxRequest.send();
-//   }
+    ajaxRequest.send();
+  }
 
 // Play the audio and loop until stopped
 function playSound(buffer) {
@@ -195,7 +196,7 @@ $(document).ready(function() {
         }
         $("#start_button").attr('disabled', 'disabled');
         playbackControl.removeAttribute('disabled');
-        // convolverGainControl.removeAttribute('disabled');
+        convolverGainControl.removeAttribute('disabled');
     });
     // Stop the audio playing
     $("#stop_button").on('click', function(e) {
@@ -203,7 +204,7 @@ $(document).ready(function() {
         sourceNode.stop(0);
         $("#start_button").removeAttr('disabled');
         playbackControl.setAttribute('disabled', 'disabled');
-        // convolverGainControl.setAttribute('disabled', 'disabled');
+        convolverGainControl.setAttribute('disabled', 'disabled');
         audioPlaying = false;
     });
 

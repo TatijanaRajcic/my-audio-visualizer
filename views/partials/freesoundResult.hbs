@@ -1,15 +1,22 @@
-<div class="freesoundPartial">      
-
-    <h2>{{this.name}} by {{this.username}}</h2>
-    <img src="{{this.images.spectral_l}}">
+<div class="freesoundPartial"> 
 
     <audio id="{{this.id}}" style="display: none" controls>
         <source src="{{this.previews.preview-hq-mp3}}" type="audio/mpeg">
     </audio>
+    
+    <h2>{{this.name}} by {{this.username}}</h2>
 
-  <button onclick="play({{this.id}})">PLAY</button>
-  <button onclick="pause({{this.id}})">PAUSE</button>
-  <button><a href="/add?download={{this.previews.preview-hq-mp3}}&id={{this.id}}&name={{this.name}}">EDIT</a></button>
+    <div class="partialInfo">
+
+        <img src="{{this.images.spectral_l}}">
+
+        <div class="partialButtons">
+            <button onclick="play({{this.id}})">PLAY</button>
+            <button onclick="pause({{this.id}})">PAUSE</button>
+            <button><a href="/add?download={{this.previews.preview-hq-mp3}}&id={{this.id}}&name={{this.name}}">EDIT</a></button>
+        </div>
+
+    </div>
 
 </div>
 

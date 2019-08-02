@@ -2,6 +2,7 @@
   <div class="home-content-container">
     <div class="typed-title">
       <h1><span class="typed"></span></h1>
+      <p>Start enditing your music today</p>
     </div>
     
     <div>
@@ -29,6 +30,7 @@
       </div>
 
       {{else}}
+
       <button class="btn-home"><a href="/login">Log in</a></button>
       <button class="btn-home"><a href="/signup">Sign up</a></button>
 
@@ -42,6 +44,8 @@
   var typed = new Typed('.typed', {
   strings: ["Sound Exp", "Sound Editing Experience"],
   typeSpeed: 30,
+  backSpeed: 50,
+  startDelay: 10
   });
 
   var typed = new Typed(".typed", options);
