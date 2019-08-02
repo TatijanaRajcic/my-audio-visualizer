@@ -1,3 +1,9 @@
+/* #E639B7
+#AE1C27
+#903925
+#FE9124 */ 
+
+
 /* GENERAL */
 
 html, body { 
@@ -176,7 +182,6 @@ button {
   display:flex;
   flex-wrap:wrap;
   width: 100%;
-  justify-content: center;
   text-align:center;
   padding: 48px 0 30px 0;
 }
@@ -186,6 +191,26 @@ button {
   width:100%;
   text-align:center;
   margin:5%
+}
+
+.show-song-container{
+  display: flex;
+  flex-direction: column;
+  width:29%;
+  margin:1%;
+  background-color:rgb(47, 43, 43);
+  padding: 1%;
+}
+
+.show-song-container:hover{
+  background-color:#0c0fce;
+}
+
+@media (max-width:500px) {
+  .show-song-container{
+    width:44%;
+    margin:2%;
+  }
 }
 
 .edit-song-button {
@@ -202,13 +227,6 @@ button {
 
 .edit-song-button a {
   color:black
-}
-
-.show-song-container{
-  display: flex;
-  flex-direction: column;
-  width:33vw;
-  margin:1%;
 }
 
 .song-img {
@@ -235,7 +253,7 @@ button {
   box-sizing: border-box;
   width: 0;
   height: 30px;
-  border-color: transparent transparent transparent #202020;
+  border-color: transparent transparent transparent white;
   cursor: pointer;
   border-style: solid;
   border-width: 20px 0 20px 30px;
@@ -247,14 +265,13 @@ button {
   box-sizing: border-box;
   width: 0;
   height: 40px;
-  border-color: transparent transparent transparent #202020;
+  border-color: transparent transparent transparent white;
   cursor: pointer;
   border-style: double;
   border-width: 0px 0 0px 30px;
 }
 
 .delete-btn{
-  background: red;
   font-family: 'Helvetica', 'Arial', sans-serif;
   font-size: 2em;
   font-weight: bold;
@@ -265,7 +282,7 @@ button {
 }
 
 .delete-btn a {
-  color: rgb(196, 189, 189);
+  color: black;
 }
 
 /* LOGIN PAGE & SIGN-UP PAGE */
@@ -315,7 +332,7 @@ button {
   margin:1%;
   align-items: center;
   text-align:center;
-  background-color: #0c0fce;
+  background-color: rgb(47, 43, 43);
   margin:5%;
   font-size: 0.7em;
   padding:2% 0
@@ -326,13 +343,13 @@ button {
 }
 
 .song-user-container:hover{
-  background-color: #350822;
+  background-color: #0c0fce;
 }
 
 @media (max-width:500px) {
   .song-user-container{
     width:100%;
-    background-color: #350822;
+    background-color: #0c0fce;
     padding:2%;
   }
 }
@@ -348,8 +365,47 @@ button {
 .index-page{
   color:white;
   padding: 48px 0px 0 0px;
+  display:flex;
+  flex-wrap: wrap;
+  width:96%;
+  text-align:center;
+  padding-left:4%
 }
 
+.user-container{
+  display:flex;
+  flex-direction: column;
+  width:30%;
+  color:black;
+  background-color:white;
+  height:30%;
+  margin: 2% 1% 2% 1%
+}
+
+@media (max-width:500px) {
+  .user-container{
+    width: 45%
+  }
+}
+
+.user-container a {
+  color:black
+}
+
+.user-container h1{
+  color:#0c0fce
+}
+
+@media (min-width:500px) {
+  .user-container:hover{
+    background-color:#350822;
+    color:white
+  }
+
+  .user-container:hover a {
+    color:white
+  }
+}
 /* OTHER */
 
 #visualiser-canvas {

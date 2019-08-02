@@ -1,9 +1,9 @@
-<div class="index-page main">
+<div class="index-page">
   {{#each users}}
-    <div>
-      {{username}}
-      {{bio}}
-      <a href="/profile/{{_id}}">See profile</a>
+    <div class="user-container">
+      <h1>{{username}}</h1>
+      <h2>{{bio}}</h2>
+      <a href="/profile/{{_id}}">see profile</a>
     </div>
   {{/each}}
 </div>
