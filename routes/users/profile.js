@@ -4,16 +4,24 @@ const Users = require("../../models/User");
 const Songs = require("../../models/Song");
 
 router.get("/:id", function(req,res) {
-  Songs.find({user:req.session.currentUser})
+  var userId = req.params.id
+  res.locals.own = false;
+  Users.findById(userId)
+  .then((user)=>{
+    Songs.find({user: user})
     .populate("user")
     .populate("effects")
     .then(songs=>{
-      debugger
-      res.render("users/profile", {songs})
+      if (req.session.currentUser._id == userId) {
+        res.locals.own = true;
+      }
+      res.render("users/profile", {songs, user})
     })
     .catch(err=>{
       res.send(err)
     })
+  })
+  
 })
 
 module.exports = router;

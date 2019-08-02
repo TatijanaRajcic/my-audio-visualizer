@@ -1,5 +1,5 @@
 <div class="user-profile-page main">
-  <h1>Welcome {{currentUser.username}} !</h1>
+  <h1>{{user.username}}'s profile</h1>
   {{#each songs}}
     <div class="song-user-container">
       <img src="{{effects.0.image}}" alt="">
@@ -7,9 +7,12 @@
       <h2># of versions: {{effects.length}}</h2>
       <div class="song-links">
         <a href="/show/{{_id}}">see details</a>
+        {{#if ../own}}
         <a href="/delete/{{_id}}">delete song</a>
+        {{/if}}
       </div>
     </div>
   {{/each}}
+  
 </div>
 

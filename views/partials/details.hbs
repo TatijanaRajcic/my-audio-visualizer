@@ -7,7 +7,9 @@
   <div class="controls-song">
     <input type="button" class="start_button_details">
     <input type="button" class="stop_button_details">
+    {{#if own}}
     <button class="delete-btn"><a href="/delete/{{id}}/{{songId}}">X</a></button>
+    {{/if}}
   </div>
 </div>
 
