@@ -29,8 +29,20 @@ a{
 button, input{
   font-family: 'Orbitron', sans-serif;
   border-radius: 10px;
-  border: none;
+}
+
+.inputs{
   padding: 10px;
+  border: none;
+}
+
+
+button{ 
+  border: none;
+}
+
+#start_button, #stop_button, .start_button_details , .stop_button_details{
+  border-radius: 0;
 }
 
 .main{
@@ -449,7 +461,7 @@ button, input{
   width: 70%;
 }
 
-.searchOptions select{
+select{
   padding: 10px;
   border-radius: 10px;
 }

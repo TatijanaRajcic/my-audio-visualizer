@@ -46,25 +46,26 @@ function setupAudioNodes() {
     sourceNode     = audioContext.createBufferSource();
     analyserNode   = audioContext.createAnalyser();
     javascriptNode = audioContext.createScriptProcessor(sampleSize, 1, 1);
-    convolverGain = audioContext.createGain();
-    convolverNode = audioContext.createConvolver();
-    masterGain = audioContext.createGain();
-    masterCompression = audioContext.createDynamicsCompressor();
-    // Create the array for the data values
+    // convolverGain = audioContext.createGain();
+    // convolverNode = audioContext.createConvolver();
+    // masterGain = audioContext.createGain();
+    // masterCompression = audioContext.createDynamicsCompressor();
+    //Create the array for the data values
     amplitudeArray = new Uint8Array(analyserNode.frequencyBinCount);
-    // Now connect the nodes together
+    //Now connect the nodes together
     sourceNode.loop = true;
-    sourceNode.connect(convolverGain);
-    sourceNode.connect(convolverNode);
-    sourceNode.connect(masterGain);
-    masterGain.connect(masterCompression);
-    masterCompression.connect(audioContext.destination);
+    // sourceNode.connect(convolverGain);
+    // sourceNode.connect(convolverNode);
+    // sourceNode.connect(masterGain);
+    // masterGain.connect(masterCompression);
+    // masterCompression.connect(audioContext.destination);
     sourceNode.connect(audioContext.destination);
     sourceNode.connect(analyserNode);
     analyserNode.connect(javascriptNode);
     javascriptNode.connect(audioContext.destination);
     sourceNode.playbackRate.value = playbackControl.value
-    convolverGain.gain.value = convolverGainControl.value;
+    //convolverGain.gain.value = convolverGainControl.value;
+
 }
 // Load the audio from the URL via Ajax and store it in global variable audioData
 // Note that the audio load is asynchronous
@@ -219,6 +220,6 @@ playbackControl.oninput = function() {
 }
 
 convolverGainControl.oninput = function() {
-    convolverGain.gain.value = convolverGainControl.value;
+    //convolverGain.gain.value = convolverGainControl.value;
     convolverGainValue.innerHTML = convolverGainControl.value;
   }
