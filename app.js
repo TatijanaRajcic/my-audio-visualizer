@@ -90,7 +90,7 @@ function accessControl(req, res, next) {
 }
 
 // Establish connection
-app.listen(3000, () => console.log("My Sound Editing project is running"));
+app.listen(process.env.PORT, () => console.log("My Sound Editing project is running"));
 
 // Exporting the app
 module.exports = app;
