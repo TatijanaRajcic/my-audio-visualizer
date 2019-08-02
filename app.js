@@ -64,17 +64,17 @@ app.use('/', require('./routes/home'));
 app.use('/search', require('./routes/search'));
 
 // songs' routes
-app.use("/show", require("./routes/songs/show"))
-app.use('/add', upload.single("song"), require('./routes/songs/add'));
-app.use('/edit', require('./routes/songs/edit'));
-app.use('/delete', require("./routes/songs/delete"))
+app.use("/show", accessControl, require("./routes/songs/show"))
+app.use('/add', accessControl, upload.single("song"), require('./routes/songs/add'));
+app.use('/edit', accessControl, require('./routes/songs/edit'));
+app.use('/delete', accessControl, require("./routes/songs/delete"))
 
 // users' routes
 app.use('/login', require('./routes/users/login'));
 app.use('/signup', require('./routes/users/signup'));
 app.use('/logout', require('./routes/users/logout'));
-app.use('/profile', require('./routes/users/profile'));
-app.use('/index', require('./routes/users/index'));
+app.use('/profile', accessControl, require('./routes/users/profile'));
+app.use('/index', accessControl, require('./routes/users/index'));
 
 // effects' routes
 app.use('/delete', require("./routes/effects/delete"))
