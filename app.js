@@ -24,11 +24,6 @@ app.use(cors())
 // configuring express session
 app.use(session({
   secret: 'super secret',
-  cookie: {maxAge: 60000},
-  store: new MongoStore({
-    mongooseConnection: mongoose.connection,
-    ttl: 24 * 60 // 1day
-  }),
   resave: false,
   saveUninitialized: true,
 }))
@@ -71,6 +66,7 @@ app.use('/search', require('./routes/search'));
 app.use("/show", require("./routes/songs/show"))
 app.use('/add', upload.single("song"), require('./routes/songs/add'));
 app.use('/edit', require('./routes/songs/edit'));
+app.use('/delete', require("./routes/songs/delete"))
 
 // users' routes
 app.use('/login', require('./routes/users/login'));

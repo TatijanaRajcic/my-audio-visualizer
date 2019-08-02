@@ -6,7 +6,9 @@ const Songs = require("../../models/Song");
 router.get("/:id", function(req,res) {
   Songs.find({user:req.session.currentUser})
     .populate("user")
+    .populate("effects")
     .then(songs=>{
+      debugger
       res.render("users/profile", {songs})
     })
     .catch(err=>{

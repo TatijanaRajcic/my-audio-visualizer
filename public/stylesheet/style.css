@@ -95,6 +95,7 @@ button {
 .btn-home{
   background-color:white;
   font-family: 'Orbitron', sans-serif;
+  border-radius: 10px;
 }
 
 .btn-home a{
@@ -122,7 +123,7 @@ button {
 }
 
 .edit-content-container{
-  padding-top:48px;
+  padding: 48px 10px 0 10px;
   color:white;
   display:flex;
   flex-direction: column;
@@ -130,7 +131,7 @@ button {
   background-color:rgba(255, 255, 255, 0.3);
   justify-content: space-around;
   align-items:center;
-  text-align:center
+  text-align:center;
 }
 
 .edit-content-container h1{
@@ -138,35 +139,34 @@ button {
   font-weight: bold
 }
 
-.playback-container{
+.playback-container, .convolver-container{
   display:flex;
   width:100%;
   align-items:center;
 }
 
-.playback-rate-control{
+.playback-rate-control, .convolver-gain-control{
   width:80%;
 }
 
-.playback-rate-value{
+.playback-rate-value, .convolver-gain-value{
   width:20%;
 }
 
-.creative-dashboard > div, .music-dashboard > div {
-  padding:2%;
-}
-
-#start_button, #stop_button {
-  border-radius: 10px;
+.creative-dashboard > div, .music-dashboard div {
+  padding:5% 0;
 }
 
 .controls{
   display:flex;
-  flex-direction:column;
 }
 
 .controls input {
   margin:4%;
+}
+
+.btn-link{
+  padding:3%
 }
 
 
@@ -175,22 +175,44 @@ button {
   color:white;
   display:flex;
   flex-wrap:wrap;
+  width: 100%;
   justify-content: center;
   text-align:center;
+  padding: 48px 0 30px 0;
 }
 
 .show-page-container h1{
+  font-size:1.5em;
   width:100%;
   text-align:center;
+  margin:5%
+}
+
+.edit-song-button {
+  width:100%;
+  display:flex;
+  justify-content: center;
+  padding:2% 0;
+}
+
+.edit-song-button button {
+  padding:1%;
+  width:20%;
+}
+
+.edit-song-button a {
+  color:black
 }
 
 .show-song-container{
-  width:45%;
+  display: flex;
+  flex-direction: column;
+  width:33vw;
+  margin:1%;
 }
 
 .song-img {
   display:flex;
-  width:100%;
   justify-content: center;
 }
 
@@ -207,22 +229,125 @@ button {
   color:black;
 }
 
-.start_button_details, .stop_button_details {
-  border-radius: 10px;
+.start_button_details, #start_button {
+  border: 0;
+  background: transparent;
+  box-sizing: border-box;
+  width: 0;
+  height: 30px;
+  border-color: transparent transparent transparent #202020;
+  cursor: pointer;
+  border-style: solid;
+  border-width: 20px 0 20px 30px;
 }
 
-.edit-song-button{
+.stop_button_details, #stop_button {
+  border: 0;
+  background: transparent;
+  box-sizing: border-box;
+  width: 0;
+  height: 40px;
+  border-color: transparent transparent transparent #202020;
+  cursor: pointer;
+  border-style: double;
+  border-width: 0px 0 0px 30px;
+}
+
+.delete-btn{
+  background: red;
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  font-size: 2em;
+  font-weight: bold;
+  text-align: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+}
+
+.delete-btn a {
+  color: rgb(196, 189, 189);
+}
+
+/* LOGIN PAGE & SIGN-UP PAGE */
+
+.login-page{
+  background-image: url("../images/bg10.jpg");
+  color:white;  
+}
+
+.login-page div, .signup-page div {
   display:flex;
-  justify-content: center;
-  padding:5%;
-}
-
-.edit-song-button button {
+  flex-direction: column;
   padding:2%;
 }
 
-.edit-song-button a {
-  color:black
+.btn-sign {
+  margin:4%;
+  padding:2%
+}
+
+.signup-page{
+  background-image: url("../images/bg11.jpg");
+  color:white;  
+}
+
+
+/* USER PROFILE PAGE */
+
+.user-profile-page{
+  color:white;
+  display:flex;
+  flex-wrap: wrap;
+  width:100%;
+  padding: 48px 0px 0 0px;
+}
+
+.user-profile-page > h1{
+  width:100%;
+  text-align: center;
+  padding-top:1%;
+}
+
+.song-user-container{
+  display:flex;
+  flex-direction:column;
+  width:40%;
+  margin:1%;
+  align-items: center;
+  text-align:center;
+  background-color: #0c0fce;
+  margin:5%;
+  font-size: 0.7em;
+  padding:2% 0
+}
+
+.song-user-container a {
+  font-size: 1.5em;
+}
+
+.song-user-container:hover{
+  background-color: #350822;
+}
+
+@media (max-width:500px) {
+  .song-user-container{
+    width:100%;
+    background-color: #350822;
+    padding:2%;
+  }
+}
+
+.song-links{
+  display:flex;
+  justify-content: space-around;
+  width:100%;
+}
+
+/* INDEX PAGE */
+
+.index-page{
+  color:white;
+  padding: 48px 0px 0 0px;
 }
 
 /* OTHER */

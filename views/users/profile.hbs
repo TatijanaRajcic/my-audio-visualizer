@@ -1,8 +1,15 @@
-{{#each songs}}
-  <p>
-    Song n*{{@index}}
-    {{name}}
-    Number of versions: {{effects.length}}
-    <a href="/show/{{_id}}">See details</a>
-  </p>
-{{/each}}
+<div class="user-profile-page main">
+  <h1>Welcome {{currentUser.username}} !</h1>
+  {{#each songs}}
+    <div class="song-user-container">
+      <img src="{{effects.0.image}}" alt="">
+      <h1>{{name}}</h1>
+      <h2># of versions: {{effects.length}}</h2>
+      <div class="song-links">
+        <a href="/show/{{_id}}">see details</a>
+        <a href="/delete/{{_id}}">delete song</a>
+      </div>
+    </div>
+  {{/each}}
+</div>
+

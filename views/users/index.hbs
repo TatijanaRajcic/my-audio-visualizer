@@ -1,5 +1,10 @@
-{{#each users}}
-  {{username}}
-  {{bio}}
-  <a href="/profile/{{_id}}">See profile</a>
-{{/each}}
+<div class="index-page main">
+  {{#each users}}
+    <div>
+      {{username}}
+      {{bio}}
+      <a href="/profile/{{_id}}">See profile</a>
+    </div>
+  {{/each}}
+</div>
+

@@ -14,8 +14,7 @@ router.get("/", (req, res, next) => {
 /* SIGN UP PROCESS */
 
 router.post("/", (req, res, next) => {
-  const username = req.body.username;
-  const password = req.body.password;
+  const {username, password, bio} = req.body
 
   if (username === "" || password === "") {
     res.render("users/signup", {
@@ -38,6 +37,7 @@ router.post("/", (req, res, next) => {
     
         User.create({
           username: username,
+          bio: bio,
           password: hashPass
         })
         .then(() => {

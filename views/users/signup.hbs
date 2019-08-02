@@ -1,5 +1,5 @@
-<div class="signup-page">
-  <form action="/signup" method="POST">
+<div class="signup-page main bg-img">
+  <form id="sign-up-form" action="/signup" method="POST">
     <h2>Sign up</h2>
 
     <div>
@@ -15,6 +15,11 @@
     {{#if errorMessage}}
       <div class="error-message">{{ errorMessage }}</div>
     {{/if}}
+
+    <div>
+      <label for="bio">Tell us what you like about music...</label><br>
+      <textarea name="bio" form="sign-up-form"></textarea>
+    </div>
 
     <button class="btn-sign" type="submit">Create account</button>
   </form>
