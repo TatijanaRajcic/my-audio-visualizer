@@ -39,6 +39,7 @@ button, input{
 
 button{ 
   border: none;
+  background-color: white;
 }
 
 #start_button, #stop_button, .start_button_details , .stop_button_details{
