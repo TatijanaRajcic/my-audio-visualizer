@@ -16,12 +16,10 @@ router.post("/:id", function(req, res, next) {
   let playback = req.body.playback;
   let songId = req.params.id;
   let screenshot = req.body.src;
-  debugger
   Songs.findById(songId)
     .then((song)=>{
       Effects.create({playback: playback, song: song._id, image: screenshot})
         .then((effect)=>{
-          debugger
           Songs.findByIdAndUpdate(songId, {$push: { effects: effect._id }}, {new: true})
             .then(result=>{
             /* res.redirect("/") */

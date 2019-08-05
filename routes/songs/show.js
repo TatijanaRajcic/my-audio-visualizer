@@ -10,7 +10,6 @@ router.get("/:id", function(req,res) {
     .populate('user')
     .then(song=>{
       var owner = song.user
-      debugger
       if (owner.id === req.session.currentUser._id) {
         res.locals.own = true;
       }
@@ -18,7 +17,6 @@ router.get("/:id", function(req,res) {
         .populate("song")
         .then(effects=> {
           res.render("songs/show", {song, effects})
-          debugger
         })
     })
     .catch(err=>{

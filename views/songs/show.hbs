@@ -32,7 +32,6 @@
     var song = e.currentTarget.parentNode.parentNode;
     var songPath = $(song).children(".path").attr("value");
     var playback = $(song).children(".playback").attr("value");
-    debugger
     let source = player.getData(songPath, playback);
     sounds[songPath] = source;
     var playBtn = $(song).children(".start_button_details");

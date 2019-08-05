@@ -12,7 +12,6 @@ router.post("/", (req, res, next) => {
   var query = req.body.searched
   var duration = req.body.duration
   var sort = req.body.sort
-  debugger
   res.redirect(`/search?query=${query}&duration=${duration}&sort=${sort}`)
   })
 

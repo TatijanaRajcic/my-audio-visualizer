@@ -78,15 +78,16 @@ function loadSound(url) {
     request.onload = function () {
         audioContext.decodeAudioData(request.response, function (buffer) {
             audioData = buffer;
+            loadingSign();
             playSound(audioData);
         }, onError);
     }
     request.send();
-    getImpulse();
-    document.querySelector('.convolver-gain-control').value = '0';
-    document.querySelector('.convolver-gain-control').addEventListener('change', function() {
-    convolverGainControl.value = this.value;
-    });
+    // getImpulse();
+    // document.querySelector('.convolver-gain-control').value = '0';
+    // document.querySelector('.convolver-gain-control').addEventListener('change', function() {
+    // convolverGainControl.value = this.value;
+    // });
 }
 
 function getImpulse() {
@@ -192,6 +193,7 @@ $(document).ready(function() {
         // Load the Audio the first time through, otherwise play it from the buffer
         if(audioData == null) {
             loadSound(audioUrl);
+            loadingSign();
         } else {
             playSound(audioData);
         }
@@ -222,4 +224,9 @@ playbackControl.oninput = function() {
 convolverGainControl.oninput = function() {
     //convolverGain.gain.value = convolverGainControl.value;
     convolverGainValue.innerHTML = convolverGainControl.value;
-  }
+}
+
+function loadingSign() {
+    $('#loading-gif').toggleClass("hidden")
+    debugger
+}
