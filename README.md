@@ -11,9 +11,9 @@ For more info: javascript folder.
 
 TO DO : 
 
-- display error message when a user signup with insufficient password (has to contained Capital letters, numbers, and symbols)
 - display error message when a user does not successfully login
 
 OBJECTIVES : 
 - add new effects
+- fix bug in second effect
 - use cloudinary so that the ressources don't get deleted by heroku
