@@ -8,3 +8,12 @@ The part of the code I'm the most proud of is managing to combine 2 different ef
 It was quite an achievement for me because sound editing is already hard to understand (without even coding!), i.e. to understand all the sounds properties etc. Moreover, the Web Audio API has a specific way of functionning (with nodes), that I was happy to discover.
 
 For more info: javascript folder.
+
+TO DO : 
+
+- display error message when a user signup with insufficient password (has to contained Capital letters, numbers, and symbols)
+- display error message when a user does not successfully login
+
+OBJECTIVES : 
+- add new effects
+- use cloudinary so that the ressources don't get deleted by heroku
