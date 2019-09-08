@@ -1,4 +1,4 @@
-# second-project
+# second Ironhack's project: http://sound-experience.herokuapp.com/
 
 This project was intended to foster people's creativity, by both enabling audio and visual experience.
 
